@@ -82,7 +82,7 @@ def run(episodes, is_training=True, render=False):
 
         rewards=0
 
-        while(not terminated and rewards>-1000):
+        while(not terminated and rewards > -1000):
 
             if is_training and rng.random() < epsilon:
                 # Choose random action (0=drive left, 1=stay neutral, 2=drive right)
@@ -162,5 +162,5 @@ def run(episodes, is_training=True, render=False):
 
 if __name__ == '__main__':
 
-    run(500, is_training=True, render=True)
+    #run(1000, is_training=True, render=False)
     run(10, is_training=False, render=True)

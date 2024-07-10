@@ -82,6 +82,9 @@ class WarehouseRobotEnv(gym.Env):
         if target_reached:
             reward=1
             terminated=True
+        else:
+            reward = -0.01
+        
 
         # Construct the observation state: 
         # [robot_row_pos, robot_col_pos, target_row_pos, target_col_pos]
