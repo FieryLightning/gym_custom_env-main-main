@@ -76,14 +76,26 @@ class WarehouseRobotEnv(gym.Env):
         # Perform action
         target_reached = self.warehouse_robot.perform_action(wr.RobotAction(action))
 
+        # print(self.warehouse_robot.robot_pos)
+        # print(self.warehouse_robot.target_pos)
+
+        distance_to_target = math.sqrt(math.pow(self.warehouse_robot.robot_pos[0] - self.warehouse_robot.target_pos[1], 2) + math.pow(self.warehouse_robot.robot_pos[1] - self.warehouse_robot.target_pos[0], 2))
+
+        #print("distance:", distance_to_target)
+
+        # normalized_dist = 1/(distance_to_target+1)
+        # inv_dist = 1 - normalized_dist
+
+        # print("score:", normalized_dist)
+
         # Determine reward and termination
         reward=0
         terminated=False
         if target_reached:
-            reward=1
+            reward=100
             terminated=True
         else:
-            reward = -0.01
+            reward = -0.001 * distance_to_target
         
 
         # Construct the observation state: 
